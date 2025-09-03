@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-blue">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PQR Bank</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/tailwindcss">
+      :root.theme-blue {
+        --color-primary-500: 37 99 235; /* blue-600 */
+        --color-secondary-500: 124 58 237; /* purple-600 */
+        --color-primary-600: 29 78 216; /* blue-700 */
+        --color-secondary-600: 109 40 217; /* purple-700 */
+        --color-primary-text: 37 99 235;
+      }
+      :root.theme-teal {
+        --color-primary-500: 13 148 136; /* teal-600 */
+        --color-secondary-500: 5 150 105; /* green-600 */
+        --color-primary-600: 15 118 110; /* teal-700 */
+        --color-secondary-600: 4 120 87; /* green-700 */
+        --color-primary-text: 13 148 136;
+      }
+      body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+    </style>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            colors: {
+              primary: {
+                DEFAULT: 'rgb(var(--color-primary-500) / <alpha-value>)',
+                600: 'rgb(var(--color-primary-600) / <alpha-value>)',
+                text: 'rgb(var(--color-primary-text) / <alpha-value>)'
+              },
+              secondary: {
+                 DEFAULT: 'rgb(var(--color-secondary-500) / <alpha-value>)',
+                 600: 'rgb(var(--color-secondary-600) / <alpha-value>)'
+              },
+              success: '#16A34A', // green-600
+              danger: '#DC2626', // red-600
+              warning: '#FF9800',
+            }
+          }
+        }
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "recharts": "https://aistudiocdn.com/recharts@^3.1.2",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
+    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.8.2",
+    "react/": "https://aistudiocdn.com/react@^19.1.1/",
+    "react": "https://aistudiocdn.com/react@^19.1.1",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.16.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="font-sans bg-violet-50 dark:bg-slate-900">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

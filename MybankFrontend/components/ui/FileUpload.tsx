@@ -1,0 +1,64 @@
+import React, { useState, ChangeEvent } from 'react';
+
+interface FileUploadProps {
+  onFileSelect: (file: File | null) => void;
+}
+
+const FileUpload: React.FC<FileUploadProps> = ({ onFileSelect }) => {
+  const [fileName, setFileName] = useState<string | null>(null);
+
+  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files ? e.target.files[0] : null;
+    if (file) {
+      setFileName(file.name);
+      onFileSelect(file);
+    } else {
+      setFileName(null);
+      onFileSelect(null);
+    }
+  };
+
+  return (
+    <div>
+      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+        KYC Document (ID, Passport, etc.)
+      </label>
+      <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 dark:border-slate-600 border-dashed rounded-md">
+        <div className="space-y-1 text-center">
+          <svg
+            className="mx-auto h-12 w-12 text-gray-400"
+            stroke="currentColor"
+            fill="none"
+            viewBox="0 0 48 48"
+            aria-hidden="true"
+          >
+            <path
+              d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          <div className="flex text-sm text-gray-600 dark:text-gray-400">
+            <label
+              htmlFor="file-upload"
+              className="relative cursor-pointer bg-white dark:bg-slate-800 rounded-md font-medium text-primary hover:text-primary-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-primary"
+            >
+              <span>Upload a file</span>
+              <input id="file-upload" name="file-upload" type="file" className="sr-only" onChange={handleFileChange} accept="image/*,.pdf" />
+            </label>
+            <p className="pl-1">or drag and drop</p>
+          </div>
+          <p className="text-xs text-gray-500 dark:text-gray-500">PNG, JPG, PDF up to 10MB</p>
+        </div>
+      </div>
+      {fileName && (
+        <p className="mt-2 text-sm font-medium text-gray-600 dark:text-gray-300">
+          Selected file: <span className="text-primary">{fileName}</span>
+        </p>
+      )}
+    </div>
+  );
+};
+
+export default FileUpload;
